@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Matthew Boetcher",
+    "speciality": "Chiropractor",
+    "reviews": [
+      {
+        "id": 1,
+        "rating": 4,
+        "comment": "Fusce pretium ac enim id pellentesque. Donec ultricies ante elit, sagittis volutpat justo malesuada vel. Aenean suscipit, metus vitae maximus accumsan, dui magna gravida dui, non aliquet sem erat mattis est.",
+        "username": "kevin33",
+        "createdDate": "02.03.2018"
+      },
+      {
+        "id": 2,
+        "rating": 5,
+        "comment": "Aenean lacinia molestie bibendum. Nunc felis elit, euismod at venenatis sed, faucibus et augue. Integer ut sem hendrerit, placerat risus non, suscipit augue. Aliquam ac mi mi.",
+        "username": "carol18",
+        "createdDate": "17.11.2017"
+      },
+      {
+        "id": 3,
+        "rating": 5,
+        "comment": "Donec pulvinar arcu nec nulla condimentum mattis eget ut orci. Maecenas finibus, sapien eu ultrices porta, nunc nulla finibus diam, id luctus magna tortor sit amet justo. Donec vitae nisl sit amet nisl porttitor fermentum eget quis purus.",
+        "username": "johnydoe88",
+        "createdDate": "12.05.2018"
+      },
+      {
+        "id": 4,
+        "rating": 5,
+        "comment": "Quisque ut tincidunt lectus. Vivamus in ante leo. Donec nisl felis, accumsan imperdiet libero quis, luctus hendrerit nulla. Pellentesque eget mi orci.",
+        "username": "carvinisto",
+        "createdDate": "03.09.2017"
+      },
+      {
+        "id": 5,
+        "rating": 5,
+        "comment": "Duis non felis nec ex hendrerit elementum vitae in neque. Duis pellentesque mattis ex vitae imperdiet. Nam vulputate elit ac est semper, ut convallis dolor tempor. ",
+        "username": "kebonafide12",
+        "createdDate": "18.02.2018"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Dr. Patricia Hastert",
+    "speciality": "Chiropractor",
+    "reviews": [
+      {
+        "id": 1,
+        "rating": 4,
+        "comment": "Fusce pretium ac enim id pellentesque. Donec ultricies ante elit, sagittis volutpat justo malesuada vel. Aenean suscipit, metus vitae maximus accumsan, dui magna gravida dui, non aliquet sem erat mattis est.",
+        "username": "kevin33",
+        "createdDate": "02.03.2018"
+      },
+      {
+        "id": 2,
+        "rating": 5,
+        "comment": "Aenean lacinia molestie bibendum. Nunc felis elit, euismod at venenatis sed, faucibus et augue. Integer ut sem hendrerit, placerat risus non, suscipit augue. Aliquam ac mi mi.",
+        "username": "carol18",
+        "createdDate": "17.11.2017"
+      },
+      {
+        "id": 3,
+        "rating": 5,
+        "comment": "Donec pulvinar arcu nec nulla condimentum mattis eget ut orci. Maecenas finibus, sapien eu ultrices porta, nunc nulla finibus diam, id luctus magna tortor sit amet justo. Donec vitae nisl sit amet nisl porttitor fermentum eget quis purus.",
+        "username": "johnydoe88",
+        "createdDate": "12.05.2018"
+      },
+      {
+        "id": 4,
+        "rating": 5,
+        "comment": "Quisque ut tincidunt lectus. Vivamus in ante leo. Donec nisl felis, accumsan imperdiet libero quis, luctus hendrerit nulla. Pellentesque eget mi orci.",
+        "username": "carvinisto",
+        "createdDate": "03.09.2017"
+      },
+      {
+        "id": 5,
+        "rating": 5,
+        "comment": "Duis non felis nec ex hendrerit elementum vitae in neque. Duis pellentesque mattis ex vitae imperdiet. Nam vulputate elit ac est semper, ut convallis dolor tempor. ",
+        "username": "kebonafide12",
+        "createdDate": "18.02.2018"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Dr. Pascale Gagnon",
+    "speciality": "Chiropractor",
+    "reviews": [
+      {
+        "id": 1,
+        "rating": 4,
+        "comment": "Fusce pretium ac enim id pellentesque. Donec ultricies ante elit, sagittis volutpat justo malesuada vel. Aenean suscipit, metus vitae maximus accumsan, dui magna gravida dui, non aliquet sem erat mattis est.",
+        "username": "kevin33",
+        "createdDate": "02.03.2018"
+      },
+      {
+        "id": 2,
+        "rating": 5,
+        "comment": "Aenean lacinia molestie bibendum. Nunc felis elit, euismod at venenatis sed, faucibus et augue. Integer ut sem hendrerit, placerat risus non, suscipit augue. Aliquam ac mi mi.",
+        "username": "carol18",
+        "createdDate": "17.11.2017"
+      },
+      {
+        "id": 3,
+        "rating": 5,
+        "comment": "Donec pulvinar arcu nec nulla condimentum mattis eget ut orci. Maecenas finibus, sapien eu ultrices porta, nunc nulla finibus diam, id luctus magna tortor sit amet justo. Donec vitae nisl sit amet nisl porttitor fermentum eget quis purus.",
+        "username": "johnydoe88",
+        "createdDate": "12.05.2018"
+      },
+      {
+        "id": 4,
+        "rating": 5,
+        "comment": "Quisque ut tincidunt lectus. Vivamus in ante leo. Donec nisl felis, accumsan imperdiet libero quis, luctus hendrerit nulla. Pellentesque eget mi orci.",
+        "username": "carvinisto",
+        "createdDate": "03.09.2017"
+      },
+      {
+        "id": 5,
+        "rating": 5,
+        "comment": "Duis non felis nec ex hendrerit elementum vitae in neque. Duis pellentesque mattis ex vitae imperdiet. Nam vulputate elit ac est semper, ut convallis dolor tempor. ",
+        "username": "kebonafide12",
+        "createdDate": "18.02.2018"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Dr. Richard E. Warden",
+    "speciality": "Chiropractor",
+    "reviews": [
+      {
+        "id": 1,
+        "rating": 4,
+        "comment": "Fusce pretium ac enim id pellentesque. Donec ultricies ante elit, sagittis volutpat justo malesuada vel. Aenean suscipit, metus vitae maximus accumsan, dui magna gravida dui, non aliquet sem erat mattis est.",
+        "username": "kevin33",
+        "createdDate": "02.03.2018"
+      },
+      {
+        "id": 2,
+        "rating": 5,
+        "comment": "Aenean lacinia molestie bibendum. Nunc felis elit, euismod at venenatis sed, faucibus et augue. Integer ut sem hendrerit, placerat risus non, suscipit augue. Aliquam ac mi mi.",
+        "username": "carol18",
+        "createdDate": "17.11.2017"
+      },
+      {
+        "id": 3,
+        "rating": 5,
+        "comment": "Donec pulvinar arcu nec nulla condimentum mattis eget ut orci. Maecenas finibus, sapien eu ultrices porta, nunc nulla finibus diam, id luctus magna tortor sit amet justo. Donec vitae nisl sit amet nisl porttitor fermentum eget quis purus.",
+        "username": "johnydoe88",
+        "createdDate": "12.05.2018"
+      },
+      {
+        "id": 4,
+        "rating": 5,
+        "comment": "Quisque ut tincidunt lectus. Vivamus in ante leo. Donec nisl felis, accumsan imperdiet libero quis, luctus hendrerit nulla. Pellentesque eget mi orci.",
+        "username": "carvinisto",
+        "createdDate": "03.09.2017"
+      },
+      {
+        "id": 5,
+        "rating": 5,
+        "comment": "Duis non felis nec ex hendrerit elementum vitae in neque. Duis pellentesque mattis ex vitae imperdiet. Nam vulputate elit ac est semper, ut convallis dolor tempor. ",
+        "username": "kebonafide12",
+        "createdDate": "18.02.2018"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Dr. Christina Jackson",
+    "speciality": "Chiropractor",
+    "reviews": [
+      {
+        "id": 1,
+        "rating": 4,
+        "comment": "Fusce pretium ac enim id pellentesque. Donec ultricies ante elit, sagittis volutpat justo malesuada vel. Aenean suscipit, metus vitae maximus accumsan, dui magna gravida dui, non aliquet sem erat mattis est.",
+        "username": "kevin33",
+        "createdDate": "02.03.2018"
+      },
+      {
+        "id": 2,
+        "rating": 5,
+        "comment": "Aenean lacinia molestie bibendum. Nunc felis elit, euismod at venenatis sed, faucibus et augue. Integer ut sem hendrerit, placerat risus non, suscipit augue. Aliquam ac mi mi.",
+        "username": "carol18",
+        "createdDate": "17.11.2017"
+      },
+      {
+        "id": 3,
+        "rating": 5,
+        "comment": "Donec pulvinar arcu nec nulla condimentum mattis eget ut orci. Maecenas finibus, sapien eu ultrices porta, nunc nulla finibus diam, id luctus magna tortor sit amet justo. Donec vitae nisl sit amet nisl porttitor fermentum eget quis purus.",
+        "username": "johnydoe88",
+        "createdDate": "12.05.2018"
+      },
+      {
+        "id": 4,
+        "rating": 5,
+        "comment": "Quisque ut tincidunt lectus. Vivamus in ante leo. Donec nisl felis, accumsan imperdiet libero quis, luctus hendrerit nulla. Pellentesque eget mi orci.",
+        "username": "carvinisto",
+        "createdDate": "03.09.2017"
+      },
+      {
+        "id": 5,
+        "rating": 5,
+        "comment": "Duis non felis nec ex hendrerit elementum vitae in neque. Duis pellentesque mattis ex vitae imperdiet. Nam vulputate elit ac est semper, ut convallis dolor tempor. ",
+        "username": "kebonafide12",
+        "createdDate": "18.02.2018"
+      }
+    ]
+  }
+]
