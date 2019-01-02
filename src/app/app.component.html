@@ -6,17 +6,17 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/doctors">Find a Doctor</a>
+        <a class="nav-link" [routerLink]="['/doctors']">Find a Doctor</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/chat">Ask for advice</a>
+        <a class="nav-link" [routerLink]="['/chat']">Ask for advice</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">About us</a>
+        <a class="nav-link" [routerLink]="['/about']">About us</a>
       </li>
     </ul>
   </div>
 </nav>
-<div class="container">
+<div class="container mt-3">
   <router-outlet></router-outlet>
 </div>
