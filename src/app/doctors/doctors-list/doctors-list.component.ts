@@ -5,13 +5,18 @@ import { IDoctor } from '../doctor';
 @Component({
   selector: 'app-doctors-list',
   templateUrl: './doctors-list.component.html',
-  styleUrls: ['./doctors-list.component.css']
+  styleUrls: ['./doctors-list.component.scss']
 })
 export class DoctorsListComponent implements OnInit {
   
   doctors: IDoctor[];
 
   constructor(private doctorsService: DoctorsService) { }
+
+  getLastComment(id: number): string {
+    let comment = this.doctors[id - 1].reviews[this.doctors[id - 1].reviews.length - 1].comment)
+    return comment
+  }
 
   ngOnInit(): void {
     this.doctorsService.getDoctors().subscribe(

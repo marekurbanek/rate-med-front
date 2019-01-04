@@ -1,3 +1,23 @@
-<p>
-  doctors-list works!
-</p>
+<div class="doctorsContainer" *ngIf='doctors && doctors.length'>
+
+  <div class="DoctorCard" *ngFor='let doctor of doctors'>
+    <div class="DoctorCard-imageContainer">
+      <img src="/assets/default-doc.jpg" class="DoctorCard-image" alt="Default doctor image">
+    </div>
+    <div class="DoctorCard-info">
+      <h4 class="DoctorCard-info-name">
+        {{ doctor.name }}
+      </h4>
+      <h4 class="DoctorCard-info-speciality">
+        <strong>{{ doctor.speciality }}</strong>
+      </h4>
+      <p class="DoctorCard-info-quote" *ngIf='doctor.reviews.length'>
+        {{ getLastComment(doctor.id) }}
+      </p>
+      <div class="DoctorCard-info-rating">
+        5 star!!
+      </div>
+    </div>
+  </div>
+  
+</div>

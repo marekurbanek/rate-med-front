@@ -1,0 +1,34 @@
+.DoctorCard {
+  width: 70%;
+  height: 250px;
+  margin: 4rem 0;
+  padding: 1.5rem;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  &-imageContainer {
+    float: left;
+    height: 100%;
+    margin: 0;
+    margin-right: 1.5rem;
+  }
+
+  &-image {
+    height: 100%;
+    width: auto;
+  }
+
+  &-info {
+    font-size: 0.8rem;
+
+    &-name {
+      text-decoration: underline;
+    }
+
+    &-speciality {
+
+    }
+  }
+}
