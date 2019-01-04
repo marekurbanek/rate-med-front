@@ -1,0 +1,7 @@
+<div class="Comments" *ngIf='comments'>
+  <div class="Comment" *ngFor='let comment of comments'>
+    <h4 class="Comment-author">{{ comment.username }}</h4>
+    <p class="Comment-createdDate">{{ comment.createdDate }}</p>
+    <p class="Comment-text">{{ comment.comment }}</p>
+  </div>
+</div>

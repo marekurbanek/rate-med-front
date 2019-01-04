@@ -14,7 +14,7 @@ export class DoctorsListComponent implements OnInit {
   constructor(private doctorsService: DoctorsService) { }
 
   getLastComment(id: number): string {
-    let comment = this.doctors[id - 1].reviews[this.doctors[id - 1].reviews.length - 1].comment)
+    let comment = this.doctors[id - 1].comments[this.doctors[id - 1].comments.length - 1].comment)
     return comment
   }
 

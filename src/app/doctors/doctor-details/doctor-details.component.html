@@ -1,0 +1,15 @@
+<div class="DoctorDetail" *ngIf='doctor'>
+  <div class="DoctorDetail-imageContainer">
+    <img src="/assets/default-doc.jpg" class="DoctorDetail-image" alt="Default doctor image">
+  </div>
+  <div class="DoctorDetail-info">
+    <h4 class="DoctorDetail-info-name">
+      {{ doctor.name }}
+    </h4>
+    <h4 class="DoctorDetail-info-speciality">
+      <strong>{{ doctor.speciality }}</strong>
+    </h4>
+  </div>
+  
+</div>
+<app-comments *ngIf='doctor' [comments]='doctor.comments'></app-comments>

@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Dr. Matthew Boetcher",
     "speciality": "Chiropractor",
-    "reviews": [
+    "comments": [
       {
         "id": 1,
         "rating": 4,
@@ -45,7 +45,7 @@
     "id": 2,
     "name": "Dr. Patricia Hastert",
     "speciality": "Chiropractor",
-    "reviews": [
+    "comments": [
       {
         "id": 1,
         "rating": 4,
@@ -87,7 +87,7 @@
     "id": 3,
     "name": "Dr. Pascale Gagnon",
     "speciality": "Chiropractor",
-    "reviews": [
+    "comments": [
       {
         "id": 1,
         "rating": 4,
@@ -129,7 +129,7 @@
     "id": 4,
     "name": "Dr. Richard E. Warden",
     "speciality": "Chiropractor",
-    "reviews": [
+    "comments": [
       {
         "id": 1,
         "rating": 4,
@@ -171,7 +171,7 @@
     "id": 3,
     "name": "Dr. Christina Jackson",
     "speciality": "Chiropractor",
-    "reviews": [
+    "comments": [
       {
         "id": 1,
         "rating": 4,
