@@ -9,7 +9,6 @@ import { IDoctor } from '../doctor';
   styleUrls: ['./doctor-details.component.scss']
 })
 export class DoctorDetailsComponent implements OnInit {
-
   doctor: IDoctor;
 
   constructor (private doctorsService: DoctorsService,

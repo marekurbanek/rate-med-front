@@ -1,7 +1,18 @@
+<div class="row">
+  <div class="col-md-8">
+    <form>
+      <div class="form-group">
+        <label for="comment">Type your comment here</label>
+        <textarea [(ngModel)]="newComment" type="email" class="form-control" id="comment" name="comment"></textarea>
+      </div>
+      <button (click)='addComment()' type="submit" class="btn btn-primary">Submit comment</button>
+    </form>
+  </div>
+</div>
 <div class="Comments" *ngIf='comments'>
   <div class="Comment" *ngFor='let comment of comments'>
-    <h4 class="Comment-author">{{ comment.username }}</h4>
-    <p class="Comment-createdDate">{{ comment.createdDate }}</p>
-    <p class="Comment-text">{{ comment.comment }}</p>
+    <h4 class="Comment-author">{{ comment.rating }}</h4>
+    <p class="Comment-createdDate">{{ comment.created }}</p>
+    <p class="Comment-text">{{ comment.text }}</p>
   </div>
 </div>

@@ -13,10 +13,6 @@ export class DoctorsListComponent implements OnInit {
 
   constructor(private doctorsService: DoctorsService) { }
 
-  // getLastComment(id: number): string {
-  //   let comment = this.doctors[id - 1].comments[this.doctors[id - 1].comments.length - 1].comment);
-  //   return comment;
-  // }
   getDoctorsList(): void {
     this.doctorsService.getDoctors().subscribe(
       doctors => {
