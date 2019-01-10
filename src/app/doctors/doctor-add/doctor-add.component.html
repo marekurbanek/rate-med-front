@@ -1,0 +1,17 @@
+<button type="button" class="btn btn-success" (click)='toggleFormVisibility()'>Add doctor</button>
+<form *ngIf='isShowingForm'>
+  <div class="form-group">
+    <label for="name">Doctor name</label>
+    <input [(ngModel)]="name" name="name" type="text" class="form-control" id="name" placeholder="Enter doctor's full name with title">
+  </div>
+  <div class="form-group">
+    <label for="speciality">Speciality</label>
+    <input [(ngModel)]="speciality" name="speciality" type="text" class="form-control" id="speciality" placeholder="Doctor's speciality">
+  </div>
+  <div class="form-group">
+    <label for="image">Image url</label>
+    <input [(ngModel)]="image" name="image" type="text" class="form-control" id="image" placeholder="Doctor's image">
+  </div>
+  
+  <button type="submit" class="btn btn-primary" (click)="addNewDoctor()">Submit</button>
+</form>

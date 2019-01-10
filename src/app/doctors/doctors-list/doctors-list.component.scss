@@ -1,7 +1,9 @@
 .DoctorCard {
   width: 70%;
   height: 250px;
-  margin: 4rem 0;
+  &:not(:first-child) {
+    margin: 2rem 0;
+  }
   padding: 1.5rem;
   -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);

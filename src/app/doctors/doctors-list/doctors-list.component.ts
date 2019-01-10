@@ -13,12 +13,12 @@ export class DoctorsListComponent implements OnInit {
 
   constructor(private doctorsService: DoctorsService) { }
 
-  getLastComment(id: number): string {
-    let comment = this.doctors[id - 1].comments[this.doctors[id - 1].comments.length - 1].comment)
-    return comment
-  }
-
-  ngOnInit(): void {
+  // getLastComment(id: number): string {
+  //   let comment = this.doctors[id - 1].comments[this.doctors[id - 1].comments.length - 1].comment);
+  //   return comment;
+  // }
+  getDoctorsList(): void {
+    console.log("Getting list");
     this.doctorsService.getDoctors().subscribe(
       doctors => {
         this.doctors = doctors
@@ -27,4 +27,7 @@ export class DoctorsListComponent implements OnInit {
     );
   }
 
+  ngOnInit(): void {
+    this.getDoctorsList();
+  }
 }

@@ -17,7 +17,7 @@ export class DoctorDetailsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id']
+    const id = this.route.snapshot.params['id'];
     this.doctorsService.getDoctors().subscribe(
       doctors => {
         this.doctor = doctors[id - 1];

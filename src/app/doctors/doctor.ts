@@ -1,6 +1,7 @@
 export interface IDoctor {
   id: number;
+  userId?: number;
   name: string;
   speciality: string;
-  comments: Array<object>;
+  image: string;
 }
