@@ -14,7 +14,7 @@ import { DoctorAddComponent } from './doctor-add/doctor-add.component';
     CommonModule,
     RouterModule.forChild([
       { path: 'doctors', component: DoctorsListComponent },
-      { path: 'doctor/:id', component: DoctorDetailsComponent }
+      { path: 'doctors/:id', component: DoctorDetailsComponent }
     ]),
     FormsModule,
     SharedModule
