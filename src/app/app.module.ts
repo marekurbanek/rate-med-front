@@ -22,7 +22,7 @@ import { SharedModule } from './shared/shared.module';
       { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ]),
     DoctorsModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
