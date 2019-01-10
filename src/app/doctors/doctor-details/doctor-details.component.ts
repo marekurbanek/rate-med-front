@@ -9,20 +9,18 @@ import { IDoctor } from '../doctor';
   styleUrls: ['./doctor-details.component.scss']
 })
 export class DoctorDetailsComponent implements OnInit {
-  
+
   doctor: IDoctor;
 
-  constructor(private doctorsService: DoctorsService,
+  constructor (private doctorsService: DoctorsService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
-    this.doctorsService.getDoctors().subscribe(
-      doctors => {
-        this.doctor = doctors[id - 1];
-      }
-    )
+    this.doctorsService.getDoctor(id).subscribe((doctor) => {
+      this.doctor = doctor;
+    });
   }
 
 }

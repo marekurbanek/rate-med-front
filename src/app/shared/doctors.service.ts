@@ -15,16 +15,17 @@ export class DoctorsService {
 
   getDoctors(): Observable<IDoctor[]> {
     return this.http.get<IDoctor[]>(this.doctorsUrl)
-      .pipe(
-        catchError(this.handleError)
-      )
+      .pipe(catchError(this.handleError))
+  }
+
+  getDoctor(id): Observable<IDoctor> {
+    return this.http.get<IDoctor>(this.doctorsUrl + '/' + id)
+      .pipe(catchError(this.handleError))
   }
 
   addDoctor(doctor): Observable<IDoctor> {
     return this.http.post<IDoctor>(this.doctorsUrl, doctor)
-      .pipe(
-        catchError(this.handleError)
-      )
+      .pipe(catchError(this.handleError))
   }
 
   private handleError(err: HttpErrorResponse) {
