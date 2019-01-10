@@ -18,7 +18,6 @@ export class DoctorsListComponent implements OnInit {
   //   return comment;
   // }
   getDoctorsList(): void {
-    console.log("Getting list");
     this.doctorsService.getDoctors().subscribe(
       doctors => {
         this.doctors = doctors
