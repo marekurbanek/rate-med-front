@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DoctorsModule } from './doctors/doctors.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { DoctorsModule } from './doctors/doctors.module';
       { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ]),
     DoctorsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

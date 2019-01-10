@@ -15,7 +15,7 @@
         {{ getLastComment(doctor.id) }}
       </p>
       <div class="DoctorCard-info-rating">
-        5 star!!
+        <app-star-rating [comments]='doctor.comments'></app-star-rating>
       </div>
     </div>
   </div>

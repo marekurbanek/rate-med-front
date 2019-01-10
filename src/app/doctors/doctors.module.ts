@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { DoctorsListComponent } from './doctors-list/doctors-list.component';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import { CommentsComponent } from './comments/comments.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { CommentsComponent } from './comments/comments.component';
     RouterModule.forChild([
       { path: 'doctors', component: DoctorsListComponent },
       { path: 'doctor/:id', component: DoctorDetailsComponent }
-    ])
+    ]),
+    SharedModule
   ],
   declarations: [DoctorsListComponent, DoctorDetailsComponent, CommentsComponent]
 })
