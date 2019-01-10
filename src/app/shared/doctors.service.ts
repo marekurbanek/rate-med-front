@@ -18,13 +18,20 @@ export class DoctorsService {
       .pipe(catchError(this.handleError))
   }
 
-  getDoctor(id): Observable<IDoctor> {
-    return this.http.get<IDoctor>(this.doctorsUrl + '/' + id)
+  getDoctor(id: number): Observable<IDoctor> {
+    const url = `${this.doctorsUrl}/${id}`;
+    return this.http.get<IDoctor>(url)
       .pipe(catchError(this.handleError))
   }
 
   addDoctor(doctor): Observable<IDoctor> {
     return this.http.post<IDoctor>(this.doctorsUrl, doctor)
+      .pipe(catchError(this.handleError))
+  }
+
+  removeDoctor(id: number): Observable<{}> {
+    const url = `${this.doctorsUrl}/${id}`;
+    return this.http.delete(url)
       .pipe(catchError(this.handleError))
   }
 

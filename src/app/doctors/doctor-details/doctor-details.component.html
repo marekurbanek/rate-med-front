@@ -10,6 +10,6 @@
       <strong>{{ doctor.speciality }}</strong>
     </h4>
   </div>
-  
+  <button (click)='removeDoctor()' type="button" class="btn btn-danger">Remove doctor</button>
 </div>
 <app-comments *ngIf='doctor' [comments]='doctor.comments'></app-comments>

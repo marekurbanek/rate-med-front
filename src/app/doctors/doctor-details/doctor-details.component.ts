@@ -16,6 +16,13 @@ export class DoctorDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router) { }
 
+  removeDoctor(): void {
+    const id = this.route.snapshot.params['id'];
+    this.doctorsService.removeDoctor(id).subscribe(() => {
+      this.router.navigate(['/doctors']);
+    })
+  }
+
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
     this.doctorsService.getDoctor(id).subscribe((doctor) => {
