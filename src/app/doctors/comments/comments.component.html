@@ -2,8 +2,16 @@
   <div class="col-md-8">
     <form>
       <div class="form-group">
-        <label for="comment">Type your comment here</label>
-        <textarea [(ngModel)]="newComment" type="email" class="form-control" id="comment" name="comment"></textarea>
+        <label for="comment">Rate doctor:</label>
+        <star-rating 
+          (ratingChange)="onRatingChange($event)" 
+          [hoverEnabled]="true" 
+          [starType]="'svg'"
+          [rating]="rating"
+          [showHalfStars]="true"
+          size="large">
+        </star-rating>
+        <textarea [(ngModel)]="newComment" type="email" class="form-control" id="comment" name="comment" placeholder="Type your comment here"></textarea>
       </div>
       <button (click)='addComment()' type="submit" class="btn btn-primary">Submit comment</button>
     </form>
@@ -12,8 +20,7 @@
 <div class="Comments" *ngIf='comments'>
   <div class="Comment" *ngFor='let comment of comments'>
     <h4 class="Comment-author">{{ comment.rating }}</h4>
-    <p class="Comment-createdDate">{{ comment.created }}</p>
+    <p class="Comment-createdDate">{{ comment.created}}</p>
     <p class="Comment-text">{{ comment.text }}</p>
-    <star-rating [starType]="'svg'" [rating]="2.63"></star-rating>
   </div>
 </div>

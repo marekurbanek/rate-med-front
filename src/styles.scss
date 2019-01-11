@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-/* @import "../node_modules/css-star-rating/scss/star-rating"; */
-@import '~css-star-rating/css/star-rating.css';
 
 *,
 *::after,
@@ -14,3 +12,9 @@
 body {
   box-sizing: border-box;
 }
+
+$color-negative-rating: #e74c3c !default;
+$color-ok-rating: #f1c40f !default;
+$color-positive-rating: #2ecc71 !default;
+$color-default-rating: #3498db !default;
+@import "../node_modules/css-star-rating/scss/star-rating";

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IComment } from './comment';
 import { DoctorsService } from 'src/app/shared/doctors.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RatingChangeEvent } from 'angular-star-rating';
 
 @Component({
   selector: 'app-comments',
@@ -11,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CommentsComponent implements OnInit {
   @Input() comments: Array<IComment>;
   newComment: string = '';
+  rating: number;
 
   constructor(private doctorsService: DoctorsService,
     private route: ActivatedRoute,
@@ -18,7 +20,7 @@ export class CommentsComponent implements OnInit {
 
   addComment(): void {
     const doctorId = this.route.snapshot.params['id'];
-    this.doctorsService.addComment(doctorId, this.newComment).subscribe(() => {
+    this.doctorsService.addComment(doctorId, this.newComment, this.rating).subscribe(() => {
       this.getComments();
     })
   }
@@ -30,10 +32,12 @@ export class CommentsComponent implements OnInit {
   getComments(): void {
     const doctorId = this.route.snapshot.params['id'];
     this.doctorsService.getCommentsByDoctorId(doctorId).subscribe(comments => {
-      console.log("FETCHING COMMENTGS SUCESS");
-      console.log(comments);
       this.comments = comments;
     })
   }
+
+  onRatingChange($event: RatingChangeEvent) {
+    this.rating = $event.rating;
+  };
 
 }

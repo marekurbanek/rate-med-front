@@ -43,9 +43,9 @@ export class DoctorsService {
       .pipe(catchError(this.handleError))
   }
 
-  addComment(doctorId: number, comment: string): Observable<{}> {
+  addComment(doctorId: number, comment: string, rating: number): Observable<{}> {
     const url = `${this.commentsUrl}`;
-    return this.http.post(url, {doctorId, comment})
+    return this.http.post(url, {doctorId, comment, rating})
       .pipe(catchError(this.handleError))
   }
 
