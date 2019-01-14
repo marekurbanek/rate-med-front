@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { IComment } from './comment';
 import { DoctorsService } from 'src/app/shared/doctors.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,13 +10,16 @@ import { RatingChangeEvent } from 'angular-star-rating';
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
-  @Input() comments: Array<IComment>;
+  @Output() averageRatingCalculated: EventEmitter<number> = new EventEmitter<number>();
+
+  comments: IComment[];
   newComment: string = '';
   rating: number;
+  averageRating: number;
 
-  constructor(private doctorsService: DoctorsService,
+  constructor (private doctorsService: DoctorsService,
     private route: ActivatedRoute,
-    private router: Router) {}
+    private router: Router) { }
 
   addComment(): void {
     const doctorId = this.route.snapshot.params['id'];
@@ -35,8 +38,18 @@ export class CommentsComponent implements OnInit {
     const doctorId = this.route.snapshot.params['id'];
     this.doctorsService.getCommentsByDoctorId(doctorId).subscribe(comments => {
       this.comments = comments;
+      this.calculateAverageRating(comments);
     })
   }
+
+  calculateAverageRating(comments: IComment[]): void {
+    let sumOfAllRatings = comments.reduce((accumulator, currentVal) => {
+      return accumulator + currentVal.rating;
+    }, 0)
+    let averageRating = sumOfAllRatings / comments.length;
+    this.averageRatingCalculated.emit(averageRating);
+  }
+
 
   onRatingChange($event: RatingChangeEvent) {
     this.rating = $event.rating;

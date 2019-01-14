@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DoctorsService } from 'src/app/shared/doctors.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IDoctor } from '../doctor';
@@ -10,6 +10,7 @@ import { IDoctor } from '../doctor';
 })
 export class DoctorDetailsComponent implements OnInit {
   doctor: IDoctor;
+  rating: number;
 
   constructor (private doctorsService: DoctorsService,
     private route: ActivatedRoute,
@@ -20,6 +21,10 @@ export class DoctorDetailsComponent implements OnInit {
     this.doctorsService.removeDoctor(id).subscribe(() => {
       this.router.navigate(['/doctors']);
     })
+  }
+
+  ratingCalculated(rating: number): void {
+    this.rating = rating;
   }
 
   ngOnInit() {

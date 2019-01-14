@@ -36,7 +36,6 @@ export class DoctorAddComponent implements OnInit {
     this.clearFields();
     this.doctorAdded.emit();
     this.isShowingForm = false;
-    console.log("Doctor successfully added !!!")
   }
 
   clearFields(): void {

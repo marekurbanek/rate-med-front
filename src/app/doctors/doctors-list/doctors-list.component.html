@@ -16,7 +16,7 @@
             <!-- {{ getLastComment(doctor.id) }} -->
           </p>
           <div class="DoctorCard-info-rating" *ngIf="doctor.rating">
-            <star-rating [rating]="doctor.rating" [showHalfStars]="true"></star-rating>
+            <star-rating [rating]="doctor.rating" [showHalfStars]="true" [readOnly]="true"></star-rating>
           </div>
         </div>
       </div>

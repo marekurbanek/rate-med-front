@@ -9,7 +9,13 @@
     <h4 class="DoctorDetail-info-speciality">
       <strong>{{ doctor.speciality }}</strong>
     </h4>
+    <star-rating 
+          [starType]="'svg'"
+          [rating]="rating"
+          [showHalfStars]="true"
+          [readOnly]="true">
+    </star-rating>
   </div>
   <button (click)='removeDoctor()' type="button" class="btn btn-danger">Remove doctor</button>
 </div>
-<app-comments *ngIf='doctor' [comments]='doctor.comments'></app-comments>
+<app-comments (averageRatingCalculated)='ratingCalculated($event)' *ngIf='doctor'></app-comments>
