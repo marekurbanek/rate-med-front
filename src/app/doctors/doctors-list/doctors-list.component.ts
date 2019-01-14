@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorsService } from 'src/app/shared/doctors.service';
 import { IDoctor } from '../doctor';
+import { IComment } from '../comments/comment';
 
 @Component({
   selector: 'app-doctors-list',
@@ -8,15 +9,15 @@ import { IDoctor } from '../doctor';
   styleUrls: ['./doctors-list.component.scss']
 })
 export class DoctorsListComponent implements OnInit {
-  
+
   doctors: IDoctor[];
 
-  constructor(private doctorsService: DoctorsService) { }
+  constructor (private doctorsService: DoctorsService) { }
 
   getDoctorsList(): void {
     this.doctorsService.getDoctors().subscribe(
       doctors => {
-        this.doctors = doctors
+        this.doctors = doctors;
       },
       error => console.log(error)
     );

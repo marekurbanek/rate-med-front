@@ -15,8 +15,8 @@
           <p class="DoctorCard-info-quote" *ngIf='doctor.comments && doctor.comments.length'>
             <!-- {{ getLastComment(doctor.id) }} -->
           </p>
-          <div class="DoctorCard-info-rating">
-            Rating placeholder
+          <div class="DoctorCard-info-rating" *ngIf="doctor.rating">
+            <star-rating [rating]="doctor.rating" [showHalfStars]="true"></star-rating>
           </div>
         </div>
       </div>
