@@ -22,6 +22,8 @@ export class CommentsComponent implements OnInit {
     const doctorId = this.route.snapshot.params['id'];
     this.doctorsService.addComment(doctorId, this.newComment, this.rating).subscribe(() => {
       this.getComments();
+      this.newComment = '';
+      this.rating = 0;
     })
   }
 
