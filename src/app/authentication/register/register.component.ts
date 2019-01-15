@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-register',
@@ -6,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  login: string = '';
+  username: string = '';
   password: string = '';
 
-  constructor() { }
+  constructor(private usersService: UsersService) { }
 
   registerUser(): void {
-    console.log(this.login)
-    console.log(this.password)
+    this.usersService.addUser({username: this.username, password: this.password}).subscribe((token) => {
+      localStorage.setItem('token', token.toString())
+    })
   }
 
   ngOnInit() {
