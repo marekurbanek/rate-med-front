@@ -3,6 +3,8 @@ import { IComment } from './comment';
 import { DoctorsService } from 'src/app/shared/doctors.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RatingChangeEvent } from 'angular-star-rating';
+import { NumberValueAccessor } from '@angular/forms/src/directives';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-comments',
@@ -16,8 +18,10 @@ export class CommentsComponent implements OnInit {
   newComment: string = '';
   rating: number;
   averageRating: number;
+  currentUserID: number;
 
   constructor (private doctorsService: DoctorsService,
+    private usersService: UsersService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -32,6 +36,7 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit() {
     this.getComments();
+    this.getUserId();
   }
 
   getComments(): void {
@@ -39,6 +44,12 @@ export class CommentsComponent implements OnInit {
     this.doctorsService.getCommentsByDoctorId(doctorId).subscribe(comments => {
       this.comments = comments;
       this.calculateAverageRating(comments);
+    })
+  }
+
+  removeComment(id: number) {
+    this.doctorsService.removeComment(id).subscribe(comments => {
+      this.getComments();
     })
   }
 
@@ -54,5 +65,11 @@ export class CommentsComponent implements OnInit {
   onRatingChange($event: RatingChangeEvent) {
     this.rating = $event.rating;
   };
+
+  getUserId(): void {
+    this.usersService.getUserData().subscribe(user => {
+      this.currentUserID = user.userId
+    })
+  }
 
 }

@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark ">
   <a class="navbar-brand" href="/">RateMed</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -16,6 +17,9 @@
       </li>
     </ul>
   </div>
+  <span class="navbar-text mr-4">
+    Hello {{username}} !
+  </span>
   <button *ngIf='!usersService.isLoggedIn()' class="btn btn-outline-success" [routerLink]="['/login']" type="button">Login</button>
   <button *ngIf='usersService.isLoggedIn()' class="btn btn-outline-success" (click)='!usersService.logout()' type="button">Logout</button>
 </nav>

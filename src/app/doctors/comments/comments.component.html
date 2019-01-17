@@ -19,6 +19,7 @@
 </div>
 <div class="Comments" *ngIf='comments'>
   <div class="Comment" *ngFor='let comment of comments'>
+    <button *ngIf='currentUserID === comment.userId' (click)='removeComment(comment.id)' class="btn btn-danger btn-sm">Remove comment</button>
     <h4 class="Comment-author">{{ comment.rating }}</h4>
     <p class="Comment-createdDate">{{ comment.created}}</p>
     <p class="Comment-text">{{ comment.text }}</p>

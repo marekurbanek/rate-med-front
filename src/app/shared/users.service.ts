@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class UsersService {
   private usersUrl: string = 'http://localhost:5000/users';
+  username: string;
+  userId: number;
 
   constructor (private http: HttpClient,
               private router: Router) { }
@@ -25,13 +27,7 @@ export class UsersService {
     return this.http.post(url, user)
       .pipe(catchError(this.handleError))
   }
-
-  testSomething(): Observable<{}> {
-    const url = `${this.usersUrl}`;
-    return this.http.get(url)
-      .pipe(catchError(this.handleError))
-  }
-
+  
   logout(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/doctors']);
@@ -39,6 +35,12 @@ export class UsersService {
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token')
+  }
+
+  getUserData(): Observable<any> {
+    const url = `${this.usersUrl}/data`;
+    return this.http.get(url)
+      .pipe(catchError(this.handleError))
   }
 
   private handleError(err: HttpErrorResponse) {

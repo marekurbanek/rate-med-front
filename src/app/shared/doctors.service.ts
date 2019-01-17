@@ -37,6 +37,12 @@ export class DoctorsService {
       .pipe(catchError(this.handleError))
   }
 
+  removeComment(id: number): Observable<{}> {
+    const url = `${this.commentsUrl}/${id}`;
+    return this.http.delete(url)
+      .pipe(catchError(this.handleError))
+  }
+
   getCommentsByDoctorId(doctorId: number): Observable<IComment[]> {
     const url = `${this.commentsUrl}/${doctorId}`;
     return this.http.get<IComment[]>(url)
