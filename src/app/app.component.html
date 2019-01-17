@@ -16,7 +16,8 @@
       </li>
     </ul>
   </div>
-  <button class="btn btn-outline-success" [routerLink]="['/login']" type="button">Login</button>
+  <button *ngIf='!isLoggedIn' class="btn btn-outline-success" [routerLink]="['/login']" type="button">Login</button>
+  <button *ngIf='isLoggedIn' class="btn btn-outline-success" (click)='logout()' type="button">Logout</button>
 </nav>
 <div class="container mt-3">
   <router-outlet></router-outlet>

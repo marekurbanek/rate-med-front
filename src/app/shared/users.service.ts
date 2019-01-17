@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpErrorResponse, HttpClient } from "@angular/common/http";
+import { HttpErrorResponse, HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -11,9 +11,31 @@ export class UsersService {
 
   constructor (private http: HttpClient) { }
 
-  addUser(user): Observable<{}> {
-    return this.http.post(this.usersUrl, user)
+  register(user): Observable<{}> {
+    const url = `${this.usersUrl}/register`;
+    console.log(user)
+    return this.http.post(url, user)
       .pipe(catchError(this.handleError))
+  }
+
+  login(user): Observable<{}> {
+    const url = `${this.usersUrl}/login`;
+    return this.http.post(url, user)
+      .pipe(catchError(this.handleError))
+  }
+
+  testSomething(): Observable<{}> {
+    const url = `${this.usersUrl}`;
+    return this.http.get(url)
+      .pipe(catchError(this.handleError))
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token')
   }
 
   private handleError(err: HttpErrorResponse) {

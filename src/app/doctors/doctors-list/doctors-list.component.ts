@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DoctorsService } from 'src/app/shared/doctors.service';
 import { IDoctor } from '../doctor';
 import { IComment } from '../comments/comment';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-doctors-list',
