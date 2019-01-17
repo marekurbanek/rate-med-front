@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { catchError } from 'rxjs/operators';
 export class UsersService {
   private usersUrl: string = 'http://localhost:5000/users';
 
-  constructor (private http: HttpClient) { }
+  constructor (private http: HttpClient,
+              private router: Router) { }
 
   register(user): Observable<{}> {
     const url = `${this.usersUrl}/register`;
@@ -32,6 +34,7 @@ export class UsersService {
 
   logout(): void {
     localStorage.removeItem('token');
+    this.router.navigate(['/doctors']);
   }
 
   isLoggedIn(): boolean {
