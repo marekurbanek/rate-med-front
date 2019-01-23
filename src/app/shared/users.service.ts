@@ -29,8 +29,6 @@ export class UsersService {
   }
 
   setUser(user): void {
-    console.log("SETTING USER")
-    console.log(user)
     this.username = user.username;
     this.userId = user.userId;
   }
@@ -45,6 +43,7 @@ export class UsersService {
   }
 
   logoutAfterTokenExpire(expirationTime): void {
+    //TODO: Expiration Time should be passed as exp Date 
     let expTimeMs = expirationTime * 1000
     setTimeout(this.logout, expTimeMs)
   }
