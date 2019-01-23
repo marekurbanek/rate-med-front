@@ -35,6 +35,8 @@ export class UsersService {
   
   logout(): void {
     localStorage.removeItem('token');
+    this.username = '';
+    this.userId = null;
     this.router.navigate(['/doctors']);
   }
 
