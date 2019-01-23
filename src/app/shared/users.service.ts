@@ -12,12 +12,12 @@ export class UsersService {
   username: string;
   userId: number;
 
+
   constructor (private http: HttpClient,
               private router: Router) { }
 
   register(user): Observable<any> {
     const url = `${this.usersUrl}/register`;
-    console.log(user)
     return this.http.post(url, user)
       .pipe(catchError(this.handleError))
   }
@@ -26,6 +26,13 @@ export class UsersService {
     const url = `${this.usersUrl}/login`;
     return this.http.post(url, user)
       .pipe(catchError(this.handleError))
+  }
+
+  setUser(user): void {
+    console.log("SETTING USER")
+    console.log(user)
+    this.username = user.username;
+    this.userId = user.userId;
   }
   
   logout(): void {
@@ -42,10 +49,11 @@ export class UsersService {
     setTimeout(this.logout, expTimeMs)
   }
 
-  getUserData(): Observable<any> {
-    const url = `${this.usersUrl}/data`;
-    return this.http.get(url)
-      .pipe(catchError(this.handleError))
+  getUserData() {
+    return {
+      username: this.username,
+      userId: this.userId
+    }
   }
 
   private handleError(err: HttpErrorResponse) {

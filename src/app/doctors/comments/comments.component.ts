@@ -67,9 +67,7 @@ export class CommentsComponent implements OnInit {
   };
 
   getUserId(): void {
-    this.usersService.getUserData().subscribe(user => {
-      this.currentUserID = user.userId
-    })
+    this.currentUserID = this.usersService.getUserData().userId;
   }
 
 }

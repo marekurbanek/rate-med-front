@@ -11,18 +11,26 @@ export class LoginComponent implements OnInit {
   isRegistering: boolean = false;
   username: string = '';
   password: string = '';
-
+  
   constructor(private usersService: UsersService,
               private router: Router) { }
 
   registerUser(): void {
-    this.usersService.register({username: this.username, password: this.password}).subscribe((res) => {
+    let user = {
+      username: this.username,
+      password: this.password
+    };
+    this.usersService.register(user).subscribe((res) => {
       this.authSuccess(res)
     })
   }
 
   loginUser(): void {
-    this.usersService.login({username: this.username, password: this.password}).subscribe((res) => {
+    let user = {
+      username: this.username,
+      password: this.password
+    };
+    this.usersService.login(user).subscribe((res) => {
       this.authSuccess(res)
     })
   }
@@ -30,6 +38,7 @@ export class LoginComponent implements OnInit {
   authSuccess(res): void {
     localStorage.setItem('token', res.token.toString());
     this.usersService.logoutAfterTokenExpire(res.expirationTime)
+    this.usersService.setUser({username: res.username, userId: res.userId})
     this.router.navigate(['/doctors']);
   }
 
