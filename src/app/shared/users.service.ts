@@ -15,14 +15,14 @@ export class UsersService {
   constructor (private http: HttpClient,
               private router: Router) { }
 
-  register(user): Observable<{}> {
+  register(user): Observable<any> {
     const url = `${this.usersUrl}/register`;
     console.log(user)
     return this.http.post(url, user)
       .pipe(catchError(this.handleError))
   }
 
-  login(user): Observable<{}> {
+  login(user): Observable<any> {
     const url = `${this.usersUrl}/login`;
     return this.http.post(url, user)
       .pipe(catchError(this.handleError))
@@ -35,6 +35,11 @@ export class UsersService {
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token')
+  }
+
+  logoutAfterTokenExpire(expirationTime): void {
+    let expTimeMs = expirationTime * 1000
+    setTimeout(this.logout, expTimeMs)
   }
 
   getUserData(): Observable<any> {

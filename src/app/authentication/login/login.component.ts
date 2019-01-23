@@ -16,17 +16,21 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
 
   registerUser(): void {
-    this.usersService.register({username: this.username, password: this.password}).subscribe((token) => {
-      localStorage.setItem('token', token.toString());
-      this.router.navigate(['/doctors']);
+    this.usersService.register({username: this.username, password: this.password}).subscribe((res) => {
+      this.authSuccess(res)
     })
   }
 
   loginUser(): void {
-    this.usersService.login({username: this.username, password: this.password}).subscribe((token) => {
-      localStorage.setItem('token', token.toString());
-      this.router.navigate(['/doctors']);
+    this.usersService.login({username: this.username, password: this.password}).subscribe((res) => {
+      this.authSuccess(res)
     })
+  }
+
+  authSuccess(res): void {
+    localStorage.setItem('token', res.token.toString());
+    this.usersService.logoutAfterTokenExpire(res.expirationTime)
+    this.router.navigate(['/doctors']);
   }
 
   toggleRegister(): void {
