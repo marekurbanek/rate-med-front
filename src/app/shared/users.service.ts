@@ -56,6 +56,12 @@ export class UsersService {
     }
   }
 
+  fetchUserData() {
+    const url = `${this.usersUrl}/data`;
+    return this.http.get(url)
+      .pipe(catchError(this.handleError))
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {

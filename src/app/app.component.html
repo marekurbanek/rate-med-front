@@ -17,7 +17,7 @@
       </li>
     </ul>
   </div>
-  <span class="navbar-text mr-4">
+  <span *ngIf='usersService.isLoggedIn()' class="navbar-text mr-4">
     Hello {{usersService.getUserData().username}} !
   </span>
   <button *ngIf='!usersService.isLoggedIn()' class="btn btn-outline-success" [routerLink]="['/login']" type="button">Login</button>
