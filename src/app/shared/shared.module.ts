@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
   ],
   declarations: [
     LoginComponent,
+    ErrorComponent,
   ],
   providers: [
     {
@@ -30,7 +32,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
   exports: [
     StarRatingModule,
     LoginComponent,
-    FormsModule
+    FormsModule,
+    ErrorComponent
   ]
 })
 export class SharedModule { }
