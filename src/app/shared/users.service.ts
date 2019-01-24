@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -71,6 +71,6 @@ export class UsersService {
       errorMessage = `Server returned code ...`;
     }
     console.error(err);
-    return throwError(errorMessage);
+    return of(err);
   }
 }

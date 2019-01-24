@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   isRegistering: boolean = false;
   username: string = '';
   password: string = '';
+  errorMessage: string;
   
   constructor(private usersService: UsersService,
               private router: Router) { }
@@ -21,7 +22,11 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
     this.usersService.register(user).subscribe((res) => {
-      this.authSuccess(res)
+      if(res.error) {
+        this.errorMessage = res.error.errorMessage;
+      } else {
+        this.authSuccess(res);
+      }
     })
   }
 
@@ -31,14 +36,19 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
     this.usersService.login(user).subscribe((res) => {
-      this.authSuccess(res)
+      if(res.error) {
+        this.errorMessage = res.error.errorMessage;
+      } else {
+        this.authSuccess(res);
+      }
     })
   }
 
   authSuccess(res): void {
     localStorage.setItem('token', res.token.toString());
-    this.usersService.logoutAfterTokenExpire(res.expirationTime)
-    this.usersService.setUser({username: res.username, userId: res.userId})
+    this.usersService.logoutAfterTokenExpire(res.expirationTime);
+    this.usersService.setUser({username: res.username, userId: res.userId});
+    this.errorMessage = '';
     this.router.navigate(['/doctors']);
   }
 
