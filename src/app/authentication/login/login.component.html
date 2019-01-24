@@ -3,17 +3,47 @@
     <app-error [errorMessage]='errorMessage'></app-error>
     <h2 *ngIf='!isRegistering'>Login form</h2>
     <h2 *ngIf='isRegistering'>Register form</h2>
-    <form>
+    <form [formGroup]='loginForm'>
       <div class="form-group">
-        <label for="login">Login</label>
-        <input [(ngModel)]='username' name='username' type="text" class="form-control" id="login" placeholder="Enter login">
+        <label for="username">Username</label>
+        <input  formControlName='username' 
+                type="text" 
+                class="form-control" 
+                id="username"
+                [ngClass]="{'is-invalid': (loginForm.get('username').touched || 
+                                          loginForm.get('username').dirty) && 
+                                          !loginForm.get('username').valid }"
+                placeholder="Enter username">
+        <span class="invalid-feedback">
+          <span *ngIf="loginForm.get('username').errors?.required">
+            Please enter username.
+          </span>
+          <span *ngIf="loginForm.get('username').errors?.minlength">
+            Username has to be at least 3 characters long.
+          </span>
+        </span>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input [(ngModel)]='password' name='password' type="password" class="form-control" id="password" placeholder="Password">
+        <input  formControlName='password' 
+                type="password" 
+                class="form-control"
+                id="password"
+                [ngClass]="{'is-invalid':  (loginForm.get('password').touched || 
+                           loginForm.get('password').dirty) && 
+                           !loginForm.get('password').valid }"
+                placeholder="Password">
+        <span class="invalid-feedback">
+            <span *ngIf="loginForm.get('password').errors?.required">
+              Please enter password.
+            </span>
+            <span *ngIf="loginForm.get('password').errors?.minlength">
+              Password has to be at least 3 characters long.
+            </span>
+          </span>
       </div>
-      <button *ngIf='!isRegistering' (click)='loginUser()' type="submit" class="btn btn-primary">Login</button>
-      <button *ngIf='isRegistering' (click)='registerUser()' type="submit" class="btn btn-primary">Register</button>
+      <button *ngIf='!isRegistering' [disabled]='!loginForm.valid' (click)='loginUser()' type="submit" class="btn btn-primary">Login</button>
+      <button *ngIf='isRegistering' [disabled]='!loginForm.valid' (click)='registerUser()' type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>
 </div>
@@ -21,7 +51,8 @@
   <div class="col-md-6 offset-md-3 mt-3">
     <div class="float-right">
       {{ isRegistering ? "Allready have an account" : "Don't have an account?" }}
-      <button *ngIf='!isRegistering' (click)='toggleRegister()' class="btn btn-outline-success" type="button">Register here</button>
+      <button *ngIf='!isRegistering' (click)='toggleRegister()' class="btn btn-outline-success" type="button">Register
+        here</button>
       <button *ngIf='isRegistering' (click)='toggleRegister()' class="btn btn-outline-success" type="button">Login here</button>
     </div>
   </div>

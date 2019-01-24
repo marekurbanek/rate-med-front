@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ErrorComponent } from './error/error.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -16,7 +16,8 @@ import { ErrorComponent } from './error/error.component';
     RouterModule.forChild([
       { path: 'login', component: LoginComponent },
     ]),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     LoginComponent,

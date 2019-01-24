@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/shared/users.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators, FormControlName, AbstractControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +11,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   isRegistering: boolean = false;
-  username: string = '';
-  password: string = '';
+  loginForm: FormGroup;
   errorMessage: string;
   
   constructor(private usersService: UsersService,
-              private router: Router) { }
+              private router: Router,
+              private fb: FormBuilder) { }
 
   registerUser(): void {
-    let user = {
-      username: this.username,
-      password: this.password
-    };
+    let user = this.loginForm.value
     this.usersService.register(user).subscribe((res) => {
       if(res.error) {
         this.errorMessage = res.error.errorMessage;
@@ -31,10 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(): void {
-    let user = {
-      username: this.username,
-      password: this.password
-    };
+    let user = this.loginForm.value
     this.usersService.login(user).subscribe((res) => {
       if(res.error) {
         this.errorMessage = res.error.errorMessage;
@@ -57,6 +53,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]]
+    })
   }
-
 }
