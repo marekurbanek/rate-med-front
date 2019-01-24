@@ -13,6 +13,7 @@
         </star-rating>
         <textarea [(ngModel)]="newComment" type="email" class="form-control" id="comment" name="comment" placeholder="Type your comment here"></textarea>
       </div>
+      <app-error [errorMessage]='errorMessage'></app-error>
       <button (click)='addComment()' type="submit" class="btn btn-primary">Submit comment</button>
     </form>
   </div>

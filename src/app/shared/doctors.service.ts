@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { IDoctor } from '../doctors/doctor';
 import { IComment } from '../doctors/comments/comment';
@@ -10,6 +10,8 @@ import { IComment } from '../doctors/comments/comment';
   providedIn: 'root'
 })
 export class DoctorsService {
+  // TODO: Move comments to separate service
+  // TODO: Add comment model and use it in service
   private doctorsUrl: string = 'http://localhost:5000/doctors';
   private commentsUrl: string = 'http://localhost:5000/comments';
 
@@ -63,6 +65,6 @@ export class DoctorsService {
       errorMessage = `Server returned code ...`;
     }
     console.error(err);
-    return throwError(errorMessage);
+    return of(err.error.errorMessage);
   }
 }
