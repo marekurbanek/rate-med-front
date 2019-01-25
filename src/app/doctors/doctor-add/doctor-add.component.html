@@ -1,17 +1,59 @@
 <button type="button" class="btn btn-success" (click)='toggleFormVisibility()'>Add doctor</button>
-<form *ngIf='isShowingForm'>
+<form *ngIf='isShowingForm' [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="name">Doctor name</label>
-    <input [(ngModel)]="name" name="name" type="text" class="form-control" id="name" placeholder="Enter doctor's full name with title">
+    <label for="name">Doctor name*</label>
+    <input 
+      formControlName="name" 
+      type="text" 
+      class="form-control" 
+      id="name"
+      placeholder="Enter doctor's full name with title"
+      [ngClass]="{'is-invalid': (doctorForm.get('name').touched || doctorForm.get('name').dirty) && !doctorForm.get('name').valid }">
+    <span class="invalid-feedback">
+      <span *ngIf="doctorForm.get('name').errors?.required">
+        Doctor's name is required.
+      </span>
+      <span *ngIf="doctorForm.get('name').errors?.minlength">
+        Doctor's name must be at least 3 characters long.
+      </span>
+    </span>
   </div>
-  <div class="form-group">
-    <label for="speciality">Speciality</label>
-    <input [(ngModel)]="speciality" name="speciality" type="text" class="form-control" id="speciality" placeholder="Doctor's speciality">
+  <div formArrayName='specialities' class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        <label>Specialities:</label>
+      </div>
+      <div class="col-md-6">
+        <button (click)='addSpeciality()' [disabled]="!specialities.valid" type="button" class="btn btn-sm btn-info">Add speciality</button>
+      </div>
+    </div>
+    <div *ngFor='let speciality of specialities.controls; let i = index'>
+      <div class="row mt-3">
+        <div class="col-md-8">
+            <input 
+            [formControlName]="i" 
+            type="text" 
+            class="form-control" 
+            placeholder="Doctor's speciality*"
+            [ngClass]="{'is-invalid': (specialities.controls[i].touched || specialities.controls[i].dirty) && !specialities.controls[i].valid }">
+            <span class="invalid-feedback">
+              <span *ngIf="specialities.controls[i].errors?.required">
+                Speciality is required.
+              </span>
+            </span>
+        </div>
+        <div class="col-md-4">
+          <button *ngIf='i !== 0' (click)='removeSpeciality(i)' type="button" class="btn btn-danger">Remove</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="image">Image url</label>
-    <input [(ngModel)]="image" name="image" type="text" class="form-control" id="image" placeholder="Doctor's image">
-  </div>
-  
-  <button type="submit" class="btn btn-primary" (click)="addNewDoctor()">Submit</button>
+    <input 
+      [(ngModel)]="image" name="image" type="text" class="form-control" id="image" placeholder="Doctor's image">
+  </div> -->
+
+  <button type="submit" class="btn btn-primary" [disabled]="!doctorForm.valid" >Submit</button>
+  <!-- <button type="submit" class="btn btn-primary" (click)="addNewDoctor()">Submit</button> -->
 </form>
