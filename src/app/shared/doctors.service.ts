@@ -22,7 +22,7 @@ export class DoctorsService {
       .pipe(catchError(this.handleError))
   }
 
-  getDoctor(id: number): Observable<IDoctor> {
+  getDoctor(id: number): Observable<{}> {
     const url = `${this.doctorsUrl}/${id}`;
     return this.http.get<IDoctor>(url)
       .pipe(catchError(this.handleError))

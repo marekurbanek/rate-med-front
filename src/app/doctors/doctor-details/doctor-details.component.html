@@ -1,4 +1,4 @@
-<div class="DoctorDetail" *ngIf='doctor'>
+<div class="DoctorDetail" style="position: relative;" *ngIf='doctor'>
   <div class="DoctorDetail-imageContainer">
     <img src="/assets/default-doc.jpg" class="DoctorDetail-image" alt="Default doctor image">
   </div>
@@ -6,16 +6,16 @@
     <h4 class="DoctorDetail-info-name">
       {{ doctor.name }}
     </h4>
-    <h4 class="DoctorDetail-info-speciality">
-      <strong>{{ doctor.speciality }}</strong>
-    </h4>
-    <star-rating 
+    <h6 class="DoctorDetail-info-speciality">
+      {{ doctor.speciality }}
+    </h6>
+    <star-rating style="float: left"
           [starType]="'svg'"
           [rating]="rating"
           [showHalfStars]="true"
           [readOnly]="true">
     </star-rating>
   </div>
-  <button (click)='removeDoctor()' type="button" class="btn btn-danger">Remove doctor</button>
+  <button (click)='removeDoctor()' style="position: absolute; bottom: 10px; right: 10px;" type="button" class="btn btn-danger">Remove doctor</button>
 </div>
 <app-comments (averageRatingCalculated)='ratingCalculated($event)' *ngIf='doctor'></app-comments>
