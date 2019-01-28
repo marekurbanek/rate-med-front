@@ -2,8 +2,9 @@
   <div class="col-md-8">
     <form>
       <div class="form-group">
-        <label for="comment">Rate doctor:</label>
-        <star-rating 
+        <label for="comment" style="display: block;">Rate doctor:</label>
+        <star-rating
+          style="float: left;"
           (ratingChange)="onRatingChange($event)" 
           [hoverEnabled]="true" 
           [starType]="'svg'"
