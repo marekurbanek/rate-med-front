@@ -57,7 +57,7 @@ export class UsersService {
     }
   }
 
-  fetchUserData() {
+  fetchUserData(): Observable<any> {
     const url = `${this.usersUrl}/data`;
     return this.http.get(url)
       .pipe(catchError(this.handleError))
