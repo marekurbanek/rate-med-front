@@ -1,27 +1,25 @@
 <div class="row mt-4">
-  <div class="col-md-8">
-    <div class="DoctorsContainer" *ngIf='doctors && doctors.length'>
-      <div class="DoctorCard" *ngFor='let doctor of doctors' [routerLink]="['/doctors', doctor.id]">
-        <div class="DoctorCard-imageContainer">
-          <img src="/assets/default-doc.jpg" class="DoctorCard-image" alt="Default doctor image">
+  <div class="col-md-8" *ngIf='doctors && doctors.length'>
+      <div class="row mb-5 p-3 DoctorCard" *ngFor='let doctor of doctors' [routerLink]="['/doctors', doctor.id]">
+        <div class="col-md-4">
+          <img src="/assets/default-doc.jpg" class="DoctorCard__img" alt="Default doctor image">
         </div>
-        <div class="DoctorCard-info">
-          <h4 class="DoctorCard-info-name">
+        <div class="col-md-8">
+          <h4>
             {{ doctor.name }}
           </h4>
-          <h4 class="DoctorCard-info-speciality">
-            <strong>{{ doctor.speciality }}</strong>
-          </h4>
+          <h6>
+            {{ doctor.speciality }}
+          </h6>
           <p class="DoctorCard-info-quote" *ngIf='doctor.comments && doctor.comments.length'>
             <!-- {{ getLastComment(doctor.id) }} -->
           </p>
-          <div class="DoctorCard-info-rating" *ngIf="doctor.rating">
-            <star-rating [rating]="doctor.rating" [showHalfStars]="true" [readOnly]="true"></star-rating>
+          <div *ngIf="doctor.rating">
+            <star-rating style="float: left;" [rating]="doctor.rating" [showHalfStars]="true" [readOnly]="true"></star-rating>
           </div>
         </div>
       </div>
     </div>
-  </div>
   <div class="col-md-4">
     <app-doctor-add (doctorAdded)='getDoctorsList()'></app-doctor-add>
   </div>
