@@ -12,8 +12,12 @@ export class AppComponent  implements OnInit {
   
   ngOnInit() {
     if(this.usersService.isLoggedIn()) {
-      this.usersService.fetchUserData().subscribe(user => {
-        this.usersService.setUser(user)
+      this.usersService.fetchUserData().subscribe(res => {
+        if(res.error) {
+          this.usersService.logout();
+        } else {
+          this.usersService.setUser(res)
+        }
       })
     }
   }
