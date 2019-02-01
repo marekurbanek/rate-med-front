@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { IComment } from './comment';
-import { DoctorsService } from 'src/app/shared/doctors.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RatingChangeEvent } from 'angular-star-rating';
 import { UsersService } from 'src/app/shared/users.service';
+import { CommentsService } from 'src/app/shared/comments.service';
 
 @Component({
   selector: 'app-comments',
@@ -20,13 +20,13 @@ export class CommentsComponent implements OnInit {
   currentUserID: number;
   errorMessage: string;
 
-  constructor (private doctorsService: DoctorsService,
-    private usersService: UsersService,
-    private route: ActivatedRoute) { }
+  constructor (private usersService: UsersService,
+              private route: ActivatedRoute,
+              private commentsService: CommentsService) { }
 
   addComment(): void {
     const doctorId = this.route.snapshot.params['id'];
-    this.doctorsService.addComment(doctorId, this.newComment, this.rating).subscribe((response) => {
+    this.commentsService.addComment(doctorId, this.newComment, this.rating).subscribe((response) => {
       if(response) {
         this.errorMessage = response.toString();
         return;
@@ -44,14 +44,14 @@ export class CommentsComponent implements OnInit {
 
   getComments(): void {
     const doctorId = this.route.snapshot.params['id'];
-    this.doctorsService.getCommentsByDoctorId(doctorId).subscribe(comments => {
+    this.commentsService.getCommentsByDoctorId(doctorId).subscribe(comments => {
       this.comments = comments;
       this.calculateAverageRating(comments);
     })
   }
 
   removeComment(id: number) {
-    this.doctorsService.removeComment(id).subscribe(comments => {
+    this.commentsService.removeComment(id).subscribe(comments => {
       this.getComments();
     })
   }
