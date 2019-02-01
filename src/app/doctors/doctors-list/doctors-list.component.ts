@@ -12,7 +12,7 @@ export class DoctorsListComponent implements OnInit {
   doctors: IDoctor[];
   filteredDoctors: IDoctor[];
   allSpecialities: string[];
-  selectedSpeciality: string;
+  selectedSpeciality = 'Show all';
   filterName = '';
 
   constructor (private doctorsService: DoctorsService) { }
@@ -30,8 +30,9 @@ export class DoctorsListComponent implements OnInit {
   getAllSpecialities(doctors): string[] {
     const specialities = doctors.map(doctor => doctor.speciality);
     const merged = [].concat.apply([], specialities);
-    merged.unshift('Show all');
-    return merged;
+    const unique = Array.from(new Set(merged));
+    unique.unshift('Show all');
+    return unique;
   }
 
   setSpeciality(speciality: string): void {
