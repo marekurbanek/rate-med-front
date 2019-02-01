@@ -19,11 +19,18 @@
     </form>
   </div>
 </div>
-<div class="Comments" *ngIf='comments'>
-  <div class="Comment" *ngFor='let comment of comments'>
-    <button *ngIf='currentUserID === comment.userId' (click)='removeComment(comment.id)' class="btn btn-danger btn-sm">Remove comment</button>
-    <h4 class="Comment-author">{{ comment.rating }}</h4>
-    <p class="Comment-createdDate">{{ comment.created}}</p>
-    <p class="Comment-text">{{ comment.text }}</p>
+<div *ngIf='comments'>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="Comment" *ngFor='let comment of comments'> 
+        <div class="Comment-header clearfix">
+          <star-rating style="float: left;" [rating]="comment.rating" [readOnly]="true"></star-rating>
+          <span class="Comment-createdDate">{{ comment.created}}</span>
+        </div>
+        Author: <u>{{ comment.username }}</u>
+        <p class="Comment-text mt-2 mb-3">{{ comment.text }}</p>
+        <button *ngIf='currentUserID === comment.userId' (click)='removeComment(comment.id)' class="btn btn-danger btn-sm RemoveButton">Remove comment</button>
+      </div>
+    </div>
   </div>
 </div>

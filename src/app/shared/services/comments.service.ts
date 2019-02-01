@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { IComment } from '../models/comment';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 
@@ -22,7 +22,14 @@ export class CommentsService {
   getCommentsByDoctorId(doctorId: number): Observable<IComment[]> {
     const url = `${this.commentsUrl}/${doctorId}`;
     return this.http.get<IComment[]>(url)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        map( response => {
+          response.forEach(comment => {
+            comment.created = new Date(Date.parse(comment.created)).toLocaleString();
+          });
+          return response;
+        }),
+        catchError(this.handleError));
   }
 
   addComment(doctorId: number, comment: string, rating: number): Observable<{}> {
