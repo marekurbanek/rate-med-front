@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorsService } from 'src/app/shared/services/doctors.service';
 import { IDoctor } from '../../shared/models/doctor';
+import { IComment } from 'src/app/shared/models/comment';
+import { CommentsService } from 'src/app/shared/services/comments.service';
 
 @Component({
   selector: 'app-doctors-list',
@@ -15,13 +17,15 @@ export class DoctorsListComponent implements OnInit {
   selectedSpeciality = 'Show all';
   filterName = '';
 
-  constructor (private doctorsService: DoctorsService) { }
+  constructor (private doctorsService: DoctorsService,
+              private commentsService: CommentsService) { }
 
   getDoctorsList(): void {
     this.doctorsService.getDoctors().subscribe(
       doctors => {
         this.doctors = doctors;
         this.filteredDoctors = doctors;
+        this.addLastCommentToDoctors();
         this.allSpecialities = this.allSpecialities ? this.allSpecialities : this.getAllSpecialities(doctors);
       }
     );
@@ -33,6 +37,14 @@ export class DoctorsListComponent implements OnInit {
     const unique = Array.from(new Set(merged));
     unique.unshift('Show all');
     return unique;
+  }
+
+  addLastCommentToDoctors() {
+    this.commentsService.getLatestComments().subscribe(comments => {
+      comments.forEach(comment => {
+        this.doctors.find(doc => doc.id === comment.doctorId).lastComment = comment.text;
+      });
+    });
   }
 
   setSpeciality(speciality: string): void {

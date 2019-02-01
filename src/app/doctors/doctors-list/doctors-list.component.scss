@@ -10,3 +10,9 @@
     width: auto;
   }
 }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}

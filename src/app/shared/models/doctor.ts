@@ -4,4 +4,5 @@ export interface IDoctor {
   name: string;
   speciality: string[];
   image: string;
+  lastComment: string;
 }

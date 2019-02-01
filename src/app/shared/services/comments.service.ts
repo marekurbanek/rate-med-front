@@ -32,6 +32,12 @@ export class CommentsService {
         catchError(this.handleError));
   }
 
+  getLatestComments(): Observable<IComment[]> {
+    const url = `${this.commentsUrl}/latest`;
+    return this.http.get<IComment[]>(url)
+      .pipe(catchError(this.handleError));
+  }
+
   addComment(doctorId: number, comment: string, rating: number): Observable<{}> {
     const url = `${this.commentsUrl}`;
     return this.http.post(url, {doctorId, comment, rating})

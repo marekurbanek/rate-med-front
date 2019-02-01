@@ -11,12 +11,15 @@
           <h6>
             {{ doctor.speciality }}
           </h6>
-          <p class="DoctorCard-info-quote" *ngIf='doctor.comments && doctor.comments.length'>
-            <!-- {{ getLastComment(doctor.id) }} -->
-          </p>
-          <div *ngIf="doctor.rating">
-            <star-rating style="float: left;" [rating]="doctor.rating" [showHalfStars]="true" [readOnly]="true"></star-rating>
+          <div *ngIf="doctor.rating" class="clearfix">
+            <star-rating  style="float: left;" [rating]="doctor.rating" [showHalfStars]="true" [readOnly]="true"></star-rating>
           </div>
+          <p *ngIf='doctor.lastComment' class="font-italic">
+            "{{ doctor.lastComment | slice:0:140 }}{{ (doctor.lastComment.length > 140) ? '...' : '' }}"
+          </p>
+          <p *ngIf='!doctor.lastComment'>
+            <small>This doctor doesn't have reviews yet. If you can please provide one.</small>
+          </p>
         </div>
       </div>
     </div>
