@@ -11,7 +11,7 @@ export class DoctorsListComponent implements OnInit {
 
   doctors: IDoctor[];
   filteredDoctors: IDoctor[];
-  allSpecialities: string[];
+  allSpecialities;
   selectedSpeciality = 'Show all';
   filterName = '';
 
@@ -27,7 +27,7 @@ export class DoctorsListComponent implements OnInit {
     );
   }
 
-  getAllSpecialities(doctors): string[] {
+  getAllSpecialities(doctors) {
     const specialities = doctors.map(doctor => doctor.speciality);
     const merged = [].concat.apply([], specialities);
     const unique = Array.from(new Set(merged));
@@ -56,7 +56,7 @@ export class DoctorsListComponent implements OnInit {
     }
   }
 
-  filter(doctors, filterBy, filterValue) {
+  filter(doctors: IDoctor[], filterBy: string, filterValue: string) {
     return doctors.filter(doctor => {
       let isMatching = false;
       if (Array.isArray(doctor[filterBy])) {
