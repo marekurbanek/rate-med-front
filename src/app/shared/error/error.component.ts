@@ -2,11 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-error',
-  templateUrl: './error.component.html',
-  styleUrls: ['./error.component.css']
+  templateUrl: './error.component.html'
 })
 export class ErrorComponent implements OnInit {
-  @Input() errorMessage: string = '';
+  @Input() errorMessage = '';
   constructor() { }
 
   ngOnInit() {

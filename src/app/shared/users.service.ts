@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpErrorResponse, HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UsersService {
-  private usersUrl: string = 'http://localhost:5000/users';
+  private usersUrl = 'http://localhost:5000/users';
   username: string;
   userId: number;
 
@@ -19,20 +19,20 @@ export class UsersService {
   register(user): Observable<any> {
     const url = `${this.usersUrl}/register`;
     return this.http.post(url, user)
-      .pipe(catchError(this.handleError))
+      .pipe(catchError(this.handleError));
   }
 
   login(user): Observable<any> {
     const url = `${this.usersUrl}/login`;
     return this.http.post(url, user)
-      .pipe(catchError(this.handleError))
+      .pipe(catchError(this.handleError));
   }
 
   setUser(user): void {
     this.username = user.username;
     this.userId = user.userId;
   }
-  
+
   logout(): void {
     localStorage.removeItem('token');
     this.username = '';
@@ -41,26 +41,26 @@ export class UsersService {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token')
+    return !!localStorage.getItem('token');
   }
 
   logoutAfterTokenExpire(expirationTime): void {
-    //TODO: Expiration Time should be passed as exp Date 
-    let expTimeMs = expirationTime * 1000
-    setTimeout(this.logout, expTimeMs)
+    // TODO: Expiration Time should be passed and processed as exp Date
+    const expTimeMs = expirationTime * 1000;
+    setTimeout(this.logout, expTimeMs);
   }
 
   getUserData() {
     return {
       username: this.username,
       userId: this.userId
-    }
+    };
   }
 
   fetchUserData(): Observable<any> {
     const url = `${this.usersUrl}/data`;
     return this.http.get(url)
-      .pipe(catchError(this.handleError))
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse) {

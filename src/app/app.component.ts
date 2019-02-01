@@ -3,22 +3,20 @@ import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
-export class AppComponent  implements OnInit {
-  constructor(private usersService: UsersService) { }
+export class AppComponent implements OnInit {
+  constructor (private usersService: UsersService) { }
 
-  
   ngOnInit() {
-    if(this.usersService.isLoggedIn()) {
+    if (this.usersService.isLoggedIn()) {
       this.usersService.fetchUserData().subscribe(res => {
-        if(res.error) {
+        if (res.error) {
           this.usersService.logout();
         } else {
-          this.usersService.setUser(res)
+          this.usersService.setUser(res);
         }
-      })
+      });
     }
   }
 }

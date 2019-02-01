@@ -9,12 +9,12 @@ export class TokenInterceptorService implements HttpInterceptor {
   constructor( ) { }
 
   intercept(req, next) {
-    let token = localStorage.getItem('token') ? localStorage.getItem('token') : '';
-    let tokenizedReq = req.clone({
+    const token = localStorage.getItem('token') ? localStorage.getItem('token') : '';
+    const tokenizedReq = req.clone({
       setHeaders: {
         Authorization: token
       }
-    })
-    return next.handle(tokenizedReq)
+    });
+    return next.handle(tokenizedReq);
   }
 }

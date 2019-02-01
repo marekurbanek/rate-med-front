@@ -11,7 +11,7 @@ export class DoctorAddComponent implements OnInit {
   @Output() doctorAdded: EventEmitter<boolean> = new EventEmitter<boolean>();
   doctorForm: FormGroup;
 
-  isShowingForm: boolean = false;
+  isShowingForm = false;
 
   constructor (private doctorsService: DoctorsService,
     private fb: FormBuilder) { }
@@ -45,7 +45,7 @@ export class DoctorAddComponent implements OnInit {
   }
 
   removeSpeciality(index: number): void {
-    this.specialities.removeAt(index)
+    this.specialities.removeAt(index);
   }
 
   ngOnInit() {
@@ -54,7 +54,7 @@ export class DoctorAddComponent implements OnInit {
       specialities: this.fb.array([
         this.fb.control('', [Validators.required])
       ])
-    })
+    });
   }
 
 }

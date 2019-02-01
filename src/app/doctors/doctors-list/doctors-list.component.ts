@@ -23,17 +23,17 @@ export class DoctorsListComponent implements OnInit {
     this.doctorsService.getDoctors().subscribe(
       doctors => {
         this.doctors = doctors;
-        this.filteredDoctors = doctors
-        this.allSpecialities = this.allSpecialities ? this.allSpecialities : this.getAllSpecialities(doctors)
+        this.filteredDoctors = doctors;
+        this.allSpecialities = this.allSpecialities ? this.allSpecialities : this.getAllSpecialities(doctors);
       }
     );
   }
 
   getAllSpecialities(doctors): string[] {
-    let specialities = doctors.map(doctor => doctor.speciality)
-    let merged = [].concat.apply([], specialities)
-    merged.unshift('Show all')
-    return merged
+    const specialities = doctors.map(doctor => doctor.speciality);
+    const merged = [].concat.apply([], specialities);
+    merged.unshift('Show all');
+    return merged;
   }
 
   setFilter(speciality: string): void {
@@ -42,23 +42,23 @@ export class DoctorsListComponent implements OnInit {
   }
 
   filterDoctors(): void {
-    if(this.selectedFilter === 'Show all') {
-      this.filteredDoctors = this.doctors
+    if (this.selectedFilter === 'Show all') {
+      this.filteredDoctors = this.doctors;
     } else {
-      this.filteredDoctors = this.doctors.filter(this.filterMatches, this.selectedFilter)
+      this.filteredDoctors = this.doctors.filter(this.filterMatches, this.selectedFilter);
     }
   }
 
   filterMatches(doctor) {
-    let isMatching = false
-    
-    doctor.speciality.forEach(speciality => {
-      if(speciality === this) {
-        isMatching = true
-      }
-    })
+    let isMatching = false;
 
-    return isMatching
+    doctor.speciality.forEach(speciality => {
+      if (speciality === this) {
+        isMatching = true;
+      }
+    });
+
+    return isMatching;
   }
 
   ngOnInit(): void {

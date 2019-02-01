@@ -20,7 +20,7 @@ export class DoctorDetailsComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
     this.doctorsService.removeDoctor(id).subscribe(() => {
       this.router.navigate(['/doctors']);
-    })
+    });
   }
 
   ratingCalculated(rating: number): void {
@@ -30,7 +30,7 @@ export class DoctorDetailsComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
     this.doctorsService.getDoctor(id).subscribe((doctor) => {
-      this.doctor = doctor
+      this.doctor = doctor;
     });
   }
 
