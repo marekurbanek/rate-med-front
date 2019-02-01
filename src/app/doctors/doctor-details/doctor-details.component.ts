@@ -34,4 +34,8 @@ export class DoctorDetailsComponent implements OnInit {
     });
   }
 
+  navigateBack() {
+    this.router.navigate(['/doctors']);
+  }
+
 }
