@@ -4,8 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-doctor-add',
-  templateUrl: './doctor-add.component.html',
-  styleUrls: ['./doctor-add.component.css']
+  templateUrl: './doctor-add.component.html'
 })
 export class DoctorAddComponent implements OnInit {
   @Output() doctorAdded: EventEmitter<boolean> = new EventEmitter<boolean>();
