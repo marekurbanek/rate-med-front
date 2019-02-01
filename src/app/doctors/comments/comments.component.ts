@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
-import { IComment } from './comment';
+import { IComment } from '../../shared/models/comment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RatingChangeEvent } from 'angular-star-rating';
-import { UsersService } from 'src/app/shared/users.service';
-import { CommentsService } from 'src/app/shared/comments.service';
+import { UsersService } from 'src/app/shared/services/users.service';
+import { CommentsService } from 'src/app/shared/services/comments.service';
 
 @Component({
   selector: 'app-comments',

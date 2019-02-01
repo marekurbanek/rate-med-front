@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DoctorsService } from 'src/app/shared/doctors.service';
+import { DoctorsService } from 'src/app/shared/services/doctors.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IDoctor } from '../doctor';
+import { IDoctor } from '../../shared/models/doctor';
 
 @Component({
   selector: 'app-doctor-details',

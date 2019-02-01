@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { IComment } from '../doctors/comments/comment';
+import { IComment } from '../models/comment';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 
 @Injectable({

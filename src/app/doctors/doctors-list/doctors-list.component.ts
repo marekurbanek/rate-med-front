@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DoctorsService } from 'src/app/shared/doctors.service';
-import { IDoctor } from '../doctor';
-import { IComment } from '../comments/comment';
-import { UsersService } from 'src/app/shared/users.service';
+import { DoctorsService } from 'src/app/shared/services/doctors.service';
+import { IDoctor } from '../../shared/models/doctor';
+import { IComment } from '../../shared/models/comment';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { isArray } from 'util';
 
 @Component({

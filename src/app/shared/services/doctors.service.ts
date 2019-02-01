@@ -3,7 +3,7 @@ import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IDoctor } from '../doctors/doctor';
+import { IDoctor } from '../models/doctor';
 
 @Injectable({
   providedIn: 'root'

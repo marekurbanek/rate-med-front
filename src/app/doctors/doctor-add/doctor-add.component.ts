@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { DoctorsService } from 'src/app/shared/doctors.service';
+import { DoctorsService } from 'src/app/shared/services/doctors.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 @Component({
