@@ -1,8 +1,5 @@
-Filter doctors by speciality:
-<button *ngFor="let speciality of allSpecialities" (click)='setFilter(speciality)' type="button" class="btn btn-sm btn-info mr-2 mb-2">{{ speciality }}</button>
 <div class="row mt-4">
-
-  <div class="col-md-8" *ngIf='filteredDoctors && filteredDoctors.length'>
+  <div class="col-md-7" *ngIf='filteredDoctors && filteredDoctors.length'>
       <div class="row mb-5 p-3 DoctorCard" *ngFor='let doctor of filteredDoctors' [routerLink]="['/doctors', doctor.id]">
         <div class="col-md-4">
           <img src="/assets/default-doc.jpg" class="DoctorCard__img" alt="Default doctor image">
@@ -23,7 +20,21 @@ Filter doctors by speciality:
         </div>
       </div>
     </div>
-  <div class="col-md-4">
+  <div class="col-md-4 ml-4">
+    <h5>Add new doctor</h5>
     <app-doctor-add (doctorAdded)='getDoctorsList()'></app-doctor-add>
+    <h5 class="mt-4">Filter by name:</h5>
+    <form class="form-group">
+      <div class="row">
+        <div class="col-md-9">
+          <input [(ngModel)]="filterName" class="form-control" type="text" name="filterName" id="filterName">
+        </div>
+        <div class="col-md-3">
+          <button (click)="filterByName()" class="btn btn-info">Filter</button>
+        </div>
+      </div>
+    </form>
+    <h5 class="mt-4">Filter by speciality:</h5>
+    <button *ngFor="let speciality of allSpecialities" (click)='setSpeciality(speciality)' type="button" class="btn btn-sm btn-info mr-2 mb-2">{{ speciality }}</button>
   </div>
 </div>

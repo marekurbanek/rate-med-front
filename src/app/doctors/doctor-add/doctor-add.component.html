@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-success" (click)='toggleFormVisibility()'>Add doctor</button>
+<button type="button" class="btn btn-sm btn-success" (click)='toggleFormVisibility()'>{{!isShowingForm ? 'Show': 'Hide'}} add doctor</button><br/>
 <form *ngIf='isShowingForm' [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="name">Doctor name*</label>

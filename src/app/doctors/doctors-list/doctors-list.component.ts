@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorsService } from 'src/app/shared/services/doctors.service';
 import { IDoctor } from '../../shared/models/doctor';
-import { IComment } from '../../shared/models/comment';
-import { UsersService } from 'src/app/shared/services/users.service';
-import { isArray } from 'util';
 
 @Component({
   selector: 'app-doctors-list',
@@ -15,7 +12,8 @@ export class DoctorsListComponent implements OnInit {
   doctors: IDoctor[];
   filteredDoctors: IDoctor[];
   allSpecialities: string[];
-  selectedFilter: string;
+  selectedSpeciality: string;
+  filterName = '';
 
   constructor (private doctorsService: DoctorsService) { }
 
@@ -36,29 +34,41 @@ export class DoctorsListComponent implements OnInit {
     return merged;
   }
 
-  setFilter(speciality: string): void {
-    this.selectedFilter = speciality;
-    this.filterDoctors();
+  setSpeciality(speciality: string): void {
+    this.selectedSpeciality = speciality;
+    this.filterBySpeciality();
   }
 
-  filterDoctors(): void {
-    if (this.selectedFilter === 'Show all') {
+  filterBySpeciality(): void {
+    if (this.selectedSpeciality === 'Show all') {
       this.filteredDoctors = this.doctors;
     } else {
-      this.filteredDoctors = this.doctors.filter(this.filterMatches, this.selectedFilter);
+      this.filteredDoctors = this.filter(this.doctors, 'speciality', this.selectedSpeciality);
     }
   }
 
-  filterMatches(doctor) {
-    let isMatching = false;
+  filterByName() {
+    if (this.filterName.length === 0) {
+      this.filterBySpeciality();
+    } else {
+      this.filteredDoctors = this.filter(this.filteredDoctors, 'name', this.filterName);
+    }
+  }
 
-    doctor.speciality.forEach(speciality => {
-      if (speciality === this) {
-        isMatching = true;
+  filter(doctors, filterBy, filterValue) {
+    return doctors.filter(doctor => {
+      let isMatching = false;
+      if (Array.isArray(doctor[filterBy])) {
+        doctor[filterBy].forEach(speciality => {
+          if (speciality.includes(filterValue)) {
+            isMatching = true;
+          }
+        });
+      } else {
+        isMatching = doctor[filterBy].toLowerCase().includes(filterValue.toLowerCase());
       }
+      return isMatching;
     });
-
-    return isMatching;
   }
 
   ngOnInit(): void {
