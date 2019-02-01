@@ -19,14 +19,7 @@
     </span>
   </div>
   <div formArrayName='specialities' class="form-group">
-    <div class="row">
-      <div class="col-md-6">
-        <label>Specialities:</label>
-      </div>
-      <div class="col-md-6">
-        <button (click)='addSpeciality()' [disabled]="!specialities.valid" type="button" class="btn btn-sm btn-info">Add speciality</button>
-      </div>
-    </div>
+    <label for="specialities">Specialities:</label>
     <div *ngFor='let speciality of specialities.controls; let i = index'>
       <div class="row mt-3">
         <div class="col-md-8">
@@ -47,6 +40,7 @@
         </div>
       </div>
     </div>
+    <button (click)='addSpeciality()' [disabled]="!specialities.valid" type="button" class="btn btn-sm btn-info">Add more specialities</button>
   </div>
   <!-- <div class="form-group">
     <label for="image">Image url</label>
@@ -55,5 +49,4 @@
   </div> -->
 
   <button type="submit" class="btn btn-primary" [disabled]="!doctorForm.valid" >Submit</button>
-  <!-- <button type="submit" class="btn btn-primary" (click)="addNewDoctor()">Submit</button> -->
 </form>
