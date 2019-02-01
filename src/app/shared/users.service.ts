@@ -64,12 +64,6 @@ export class UsersService {
   }
 
   private handleError(err: HttpErrorResponse) {
-    let errorMessage = '';
-    if (err.error instanceof ErrorEvent) {
-      errorMessage = `Error ocurred: ${err.error.message}`
-    } else {
-      errorMessage = `Server returned code ...`;
-    }
     console.error(err);
     return of(err);
   }
