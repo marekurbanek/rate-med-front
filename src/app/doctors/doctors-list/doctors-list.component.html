@@ -35,6 +35,6 @@
       </div>
     </form>
     <h5 class="mt-4">Filter by speciality:</h5>
-    <button *ngFor="let speciality of allSpecialities" (click)='setSpeciality(speciality)' type="button" class="btn btn-sm btn-info mr-2 mb-2">{{ speciality }}</button>
+    <button *ngFor="let speciality of allSpecialities" [ngClass]="{'active': speciality === selectedSpeciality}" (click)='setSpeciality(speciality)' type="button" class="btn btn-sm btn-info mr-2 mb-2">{{ speciality }}</button>
   </div>
 </div>
