@@ -38,4 +38,8 @@ export class DoctorDetailsComponent implements OnInit {
     this.router.navigate(['/doctors']);
   }
 
+  getImagePath(imageName?: string): string {
+    const path = imageName ? `http://localhost:5000/users/images/${imageName}.jpg` : '/assets/default-doc.jpg';
+    return path;
+  }
 }

@@ -2,7 +2,7 @@
   <div class="col-md-7" *ngIf='filteredDoctors && filteredDoctors.length'>
       <div class="row mb-5 p-3 DoctorCard" *ngFor='let doctor of filteredDoctors' [routerLink]="['/doctors', doctor.id]">
         <div class="col-md-4">
-          <img src="/assets/default-doc.jpg" class="DoctorCard__img" alt="Default doctor image">
+          <img [src]="getImagePath(doctor.image)" class="DoctorCard__img" alt="Default doctor image">
         </div>
         <div class="col-md-8">
           <h4>

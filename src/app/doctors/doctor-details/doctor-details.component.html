@@ -5,7 +5,7 @@
 
 <div class="DoctorDetail" style="position: relative;" *ngIf='doctor'>
   <div class="DoctorDetail-imageContainer">
-    <img src="/assets/default-doc.jpg" class="DoctorDetail-image" alt="Default doctor image">
+    <img [src]="getImagePath(doctor.image)" class="DoctorDetail-image" alt="Default doctor image">
   </div>
   <div class="DoctorDetail-info">
     <h4 class="DoctorDetail-info-name">
