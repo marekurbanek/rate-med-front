@@ -11,6 +11,7 @@ export class DoctorAddComponent implements OnInit {
   doctorForm: FormGroup;
 
   isShowingForm = false;
+  profileImage: File;
 
   constructor (private doctorsService: DoctorsService,
     private fb: FormBuilder) { }
@@ -34,7 +35,13 @@ export class DoctorAddComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.doctorsService.addDoctor(this.doctorForm.value).subscribe(() => {
+    // TODO Find better way to handle doctor form as whole
+    const fd = new FormData();
+    fd.append('profileImage', this.profileImage);
+    fd.append('name', this.doctorForm.value.name);
+    fd.append('specialities', this.doctorForm.value.specialities);
+
+    this.doctorsService.addDoctor(fd).subscribe(() => {
       this.atDoctorAdded();
     });
   }
@@ -56,4 +63,7 @@ export class DoctorAddComponent implements OnInit {
     });
   }
 
+  fileUploaded(event: any) {
+    this.profileImage = event.srcElement.files[0];
+  }
 }
