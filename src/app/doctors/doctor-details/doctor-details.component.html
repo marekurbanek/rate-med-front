@@ -12,15 +12,15 @@
       {{ doctor.name }}
     </h4>
     <h6 class="DoctorDetail-info-speciality">
-      {{ doctor.speciality }}
+      {{ doctor.specialities  }}
     </h6>
     <star-rating style="float: left"
           [starType]="'svg'"
-          [rating]="rating"
+          [rating]="doctor.rating"
           [showHalfStars]="true"
           [readOnly]="true">
     </star-rating>
   </div>
   <button (click)='removeDoctor()' style="position: absolute; bottom: 10px; right: 10px;" type="button" class="btn btn-danger">Remove doctor</button>
 </div>
-<app-comments (averageRatingCalculated)='ratingCalculated($event)' *ngIf='doctor'></app-comments>
+<app-comments *ngIf='doctor' [comments]="doctor.comments" (getComments)="getComments()"></app-comments>

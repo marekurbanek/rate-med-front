@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { IComment } from '../../shared/models/comment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RatingChangeEvent } from 'angular-star-rating';
@@ -11,9 +11,9 @@ import { CommentsService } from 'src/app/shared/services/comments.service';
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
-  @Output() averageRatingCalculated: EventEmitter<number> = new EventEmitter<number>();
+  @Output() getComments: EventEmitter<number> = new EventEmitter<number>();
+  @Input() comments: IComment[];
 
-  comments: IComment[];
   newComment = '';
   rating: number;
   averageRating: number;
@@ -27,43 +27,32 @@ export class CommentsComponent implements OnInit {
   addComment(): void {
     const doctorId = this.route.snapshot.params['id'];
     this.commentsService.addComment(doctorId, this.newComment, this.rating).subscribe((response) => {
-      if (response) {
+      if (response.error) {
         this.errorMessage = response.toString();
         return;
       }
-      this.getComments();
       this.newComment = '';
       this.rating = 0;
+      this.getNewComments();
     });
   }
 
   ngOnInit() {
-    this.getComments();
     this.getUserId();
+    this.comments.forEach(comment => {
+      comment.created = new Date(Date.parse(comment.createdAt)).toLocaleString();
+    })
   }
 
-  getComments(): void {
-    const doctorId = this.route.snapshot.params['id'];
-    this.commentsService.getCommentsByDoctorId(doctorId).subscribe(comments => {
-      this.comments = comments;
-      this.calculateAverageRating(comments);
-    });
+  getNewComments() {
+    this.getComments.emit();
   }
 
   removeComment(id: number) {
     this.commentsService.removeComment(id).subscribe(comments => {
-      this.getComments();
+      this.getNewComments();
     });
   }
-
-  calculateAverageRating(comments: IComment[]): void {
-    const sumOfAllRatings = comments.reduce((accumulator, currentVal) => {
-      return accumulator + currentVal.rating;
-    }, 0);
-    const averageRating = sumOfAllRatings / comments.length;
-    this.averageRatingCalculated.emit(averageRating);
-  }
-
 
   onRatingChange($event: RatingChangeEvent) {
     this.rating = $event.rating;

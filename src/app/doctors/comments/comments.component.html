@@ -27,9 +27,9 @@
           <star-rating style="float: left;" [rating]="comment.rating" [readOnly]="true"></star-rating>
           <span class="Comment-createdDate">{{ comment.created}}</span>
         </div>
-        Author: <u>{{ comment.username }}</u>
+        Author: <u>{{ comment.user?.username }}</u>
         <p class="Comment-text mt-2 mb-3">{{ comment.text }}</p>
-        <button *ngIf='currentUserID === comment.userId' (click)='removeComment(comment.id)' class="btn btn-danger btn-sm RemoveButton">Remove comment</button>
+        <button *ngIf='currentUserID === comment.user?.id' (click)='removeComment(comment.id)' class="btn btn-danger btn-sm RemoveButton">Remove comment</button>
       </div>
     </div>
   </div>

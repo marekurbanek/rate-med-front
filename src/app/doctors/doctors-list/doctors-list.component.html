@@ -9,7 +9,7 @@
             {{ doctor.name }}
           </h4>
           <h6>
-            {{ doctor.speciality }}
+            {{ doctor.specialities }}
           </h6>
           <div *ngIf="doctor.rating" class="clearfix">
             <star-rating  style="float: left;" [rating]="doctor.rating" [showHalfStars]="true" [readOnly]="true"></star-rating>

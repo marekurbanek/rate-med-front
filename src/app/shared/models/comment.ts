@@ -5,4 +5,5 @@ export interface IComment {
   text: string;
   rating: number;
   created: string;
+  createdAt?: string;
 }

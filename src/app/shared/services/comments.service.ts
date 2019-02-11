@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { IComment } from '../models/comment';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { IResponse } from '../models/response';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class CommentsService {
       .pipe(catchError(this.handleError));
   }
 
-  addComment(doctorId: number, comment: string, rating: number): Observable<{}> {
+  addComment(doctorId: number, comment: string, rating: number): Observable<IResponse> {
     const url = `${this.commentsUrl}`;
     return this.http.post(url, {doctorId, comment, rating})
       .pipe(catchError(this.handleError));

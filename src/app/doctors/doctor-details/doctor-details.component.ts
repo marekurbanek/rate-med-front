@@ -10,7 +10,6 @@ import { IDoctor } from '../../shared/models/doctor';
 })
 export class DoctorDetailsComponent implements OnInit {
   doctor: IDoctor;
-  rating: number;
 
   constructor (private doctorsService: DoctorsService,
     private route: ActivatedRoute,
@@ -23,14 +22,17 @@ export class DoctorDetailsComponent implements OnInit {
     });
   }
 
-  ratingCalculated(rating: number): void {
-    this.rating = rating;
+  ngOnInit() {
+    this.getDoctorWithComments();
   }
 
-  ngOnInit() {
+  getDoctorWithComments() {
     const id = this.route.snapshot.params['id'];
     this.doctorsService.getDoctor(id).subscribe((doctor) => {
+      doctor.specialities = doctor.specialities.map(x => x.speciality);
       this.doctor = doctor;
+    console.log(this.doctor)
+
     });
   }
 
@@ -41,5 +43,9 @@ export class DoctorDetailsComponent implements OnInit {
   getImagePath(imageName?: string): string {
     const path = imageName ? `http://localhost:5000/users/images/${imageName}.jpg` : '/assets/default-doc.jpg';
     return path;
+  }
+
+  getComments(): void {
+    this.getDoctorWithComments();
   }
 }

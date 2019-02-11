@@ -2,7 +2,7 @@ export interface IDoctor {
   id: number;
   userId?: number;
   name: string;
-  speciality: string[];
+  specialities: string[];
   image: string;
   lastComment: string;
 }

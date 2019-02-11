@@ -23,6 +23,9 @@ export class DoctorsListComponent implements OnInit {
   getDoctorsList(): void {
     this.doctorsService.getDoctors().subscribe(
       doctors => {
+        doctors.forEach(doctor => {
+          doctor.specialities = doctor.specialities.map(spec => spec.speciality);
+        });
         this.doctors = doctors;
         this.filteredDoctors = doctors;
         this.addLastCommentToDoctors();
@@ -32,7 +35,7 @@ export class DoctorsListComponent implements OnInit {
   }
 
   getAllSpecialities(doctors) {
-    const specialities = doctors.map(doctor => doctor.speciality);
+    const specialities = doctors.map(doctor => doctor.specialities);
     const merged = [].concat.apply([], specialities);
     const unique = Array.from(new Set(merged));
     unique.unshift('Show all');
@@ -56,7 +59,7 @@ export class DoctorsListComponent implements OnInit {
     if (this.selectedSpeciality === 'Show all') {
       this.filteredDoctors = this.doctors;
     } else {
-      this.filteredDoctors = this.filter(this.doctors, 'speciality', this.selectedSpeciality);
+      this.filteredDoctors = this.filter(this.doctors, 'specialities', this.selectedSpeciality);
     }
   }
 
