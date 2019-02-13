@@ -13,12 +13,12 @@ export class DoctorsService {
 
   constructor (private http: HttpClient) { }
 
-  getDoctors(): Observable<IDoctor[]> {
-    return this.http.get<IDoctor[]>(this.doctorsUrl)
+  getDoctors(): Observable<any> {
+    return this.http.get<any>(this.doctorsUrl)
       .pipe(catchError(this.handleError));
   }
 
-  getDoctor(id: number): Observable<IDoctor> {
+  getDoctor(id: number): Observable<any> {
     const url = `${this.doctorsUrl}/${id}`;
     return this.http.get<IDoctor>(url)
       .pipe(catchError(this.handleError));
